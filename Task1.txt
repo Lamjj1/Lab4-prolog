@@ -1,0 +1,39 @@
+1. ?- house = house.
+   Result: true.
+   Explanation: They are the same atom, so they match
+
+2. ?- house = abc.
+   Result: false.
+   Explanation: They are two different atoms, so they do not match
+
+3. ?- edge(a,b) = edge(C,b).
+   Result: C = a.
+   Explanation: C can take the value a, and b already matches b
+
+4. ?- edge(a,d) = edge(C,B).
+   Result: C = a, B = d.
+   Explanation: C takes a and B takes d, so both sides become the same
+
+5. ?- edge(C,B) = edge(a,d).
+   Result: C = a, B = d.
+   Explanation: C takes a and B takes d, so both sides become the same
+
+6. ?- edge(A,f(g,h)) = edge(a,B).
+   Result: A = a, B = f(g,h).
+   Explanation: A takes a, and B takes the whole term f(g,h)
+
+7. ?- edge(A,A) = edge(b,c).
+   Result: false.
+   Explanation: A is used twice, so it must have one value. It cannot be b and c at the same time
+
+8. ?- edge(A,A) = edge(b,b).
+   Result: A = b.
+   Explanation: Both positions need b, so A can be b in both places
+
+9. ?- A = B, B = f.
+   Result: A = B, B = f. (Both A and B have the value f)
+   Explanation: A and B are connected. When B becomes f, A becomes f as well
+
+10. ?- A = B, B = f, A = e.
+    Result: false.
+    Explanation: A and B must be the same. B is f, but the last part says A is e, so it fails 
